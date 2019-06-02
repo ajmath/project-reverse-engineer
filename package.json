@@ -5,6 +5,10 @@
   "repository": "git@github.com:Contrast-Security-OSS/project-reverse-engineer.git",
   "author": "Andrew Matheny <andrew.j.matheny@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest --silent",
+    "test-watch": "jest --watch --silent"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
