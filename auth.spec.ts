@@ -54,4 +54,16 @@ describe("auth.ts", () => {
       status: 403
     });
   });
+
+  it("should accept basic auth with hard-coded password", async () => {
+    const token = Buffer.from("fill in the password").toString('base64');
+    const req = mockRequest(`Basic ${token}`);
+    const result = await authenticate(req);
+    expect(result).toEqual({
+      authenticated: true,
+      message: "Basic Auth Successful",
+      status: 200,
+      type: 1
+    });
+  })
 });
