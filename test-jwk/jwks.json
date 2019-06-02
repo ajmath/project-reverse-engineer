@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "kty":"RSA",
+      "e":"AQAB",
+      "use": "sig",
+      "alg": "RS256",
+      "kid":"contrast-test-key",
+      "n":"yo5RXNtJX2YpUKEob4Vjml01WR23r9dIgHxWypHyCZwe-qMzudZCRZyVAyqJYWeFVcHW4sXag9u3HHbUiDxrV03gVy5_rEdYHBY6kHySU9ENli3DlYJQZ5cq81S6JN9bxCL874IqkxBJH7ssx6KKCMXM3b1RUhWqnsZx21aq1nORw2peoxXztPETItJD9s1T_7Egj_K1YOaZBo1Q7itUCu0lj7MYhu_WxQv7iSJzM4V5tikT4f16ZPdzEsUVVX9tILefiUyrRBWftpWSzG5AI7sPpYi6PA-uDX3ev_rNSHLwUU9mFkApvqnpePoKLVBMVGhOjQ3hsJ4lQU4MgpEkVrT6MXoHO_cTzQhMfC0Sdil_8JndrUcAFiyYV0UupWKqrlxLxCIdAshd3eE0YvsfdwWtSUe8O_uWAE5EEDjeDpgPLZvvIni62_86BcJcaGNCsN8skDNkOfX4JYjP9lwfawKA2ybX_7lQ-Qy6C6JIzAAKf5a7l7w-Fe6EQ7AXOqB_TM9sUuR_X_MPNnNtcTwP7dElUsklcDOtXwQmwm7U3rJCqTGkFDXpk3k7wC0NMSVwM_LfYgtWt-Yu9R6UncCFMJh1ZYBIc7gGbGGbqg9sEKBHm0fUn1G3Qsqc_wzjYd4WJRJh0Yc_yFItk8ratDaUo-L9lpsLPhAxuKyIT7xiFGs"
+    }
+  ]
+}
