@@ -1,7 +1,8 @@
 import { Request } from 'express'
 import * as jwksRsa from 'jwks-rsa';
 import { decode, verify, VerifyOptions } from 'jsonwebtoken'
-import { log } from './log'
+
+const log = console;
 
 const _jwksUri: string = 'https://login.microsoftonline.com/common/discovery/v2.0/keys'
 
@@ -70,7 +71,7 @@ async function validateJWT(jsonWebToken: string, jwksUri: string, ignoreExpirati
         throw('Key ID not found in JWT header')
     }
  
-    let key: string = undefined
+    let key: string|undefined = undefined
     try {
         key = await getSigningKeyP(decoded.header.kid, jwksUri)
     }
@@ -174,7 +175,7 @@ function basic_auth(authString: string): authStatus {
 export async function authenticate(req: Request, audience?: string, jwksUri?: string): Promise<authStatus> {
     if(!jwksUri) jwksUri = _jwksUri
 
-    let authString: string = req.headers['authorization']
+    let authString = req.headers['authorization']
     if (authString === undefined) {
         return {authenticated: false, status: 403, message: 'Authentication header is empty'};
     }
@@ -183,7 +184,7 @@ export async function authenticate(req: Request, audience?: string, jwksUri?: st
         return basic_auth(authString);
     }
     else if(authString.startsWith('MSAuth1.0')) { // S2S Auth Processing
-        let audience: string = process.env.AUDIENCE
+        let audience = process.env.AUDIENCE
         log.info('Audience is:', audience)
         if(audience !== undefined) { // Audience is required for S2S
             return await s2s_auth(authString, jwksUri, audience, false);
