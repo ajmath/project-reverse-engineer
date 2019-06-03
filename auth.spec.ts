@@ -1,10 +1,10 @@
+import * as express from "express";
 import { Request } from "express";
-import { authenticate } from "./auth";
+import * as fs from "fs";
+import { Server } from "http";
 import { sign, SignOptions } from "jsonwebtoken";
 import * as portfinder from "portfinder";
-import * as fs from "fs";
-import * as express from "express";
-import { Server } from "http";
+import { authenticate } from "./auth";
 
 function mockRequest(authorizationHeader?: string): Request {
   return {
@@ -54,7 +54,7 @@ describe("auth.ts", () => {
     });
 
     it("should accept basic auth with hard-coded password", async () => {
-      const token = Buffer.from("fill in the password").toString('base64');
+      const token = Buffer.from("fill in the password").toString("base64");
       const req = mockRequest(`Basic ${token}`);
       const result = await authenticate(req);
       expect(result).toEqual({
@@ -72,7 +72,7 @@ describe("auth.ts", () => {
 
     beforeAll(async (done) => {
       const jwksApp = express();
-      jwksApp.use(express.static('test-jwk'));
+      jwksApp.use(express.static("test-jwk"));
 
       const port = await portfinder.getPortPromise({ port: 3000, stopPort: 3333 });
       jwksServer = jwksApp.listen(port, done);
@@ -93,7 +93,7 @@ describe("auth.ts", () => {
       });
     });
 
-    it("should accept valid MsAuth1.0 JWT tokens", async () => {
+    it("accepts a valid token issued from a mock jwks supplier", async () => {
       const signingOpts: SignOptions = {
         keyid: "contrast-test-key",
         algorithm: "RS256",
